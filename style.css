@@ -487,6 +487,8 @@ footer {
     }
 
     .productShow-gallery {
+        position: fixed;
+        top: 59rem;
         display: flex;
         max-width: 25rem;
         align-items: center;
@@ -498,7 +500,7 @@ footer {
         border-radius: 10px;
     }
 
-    .productShow-bigPhoto img.arrow {
+    .productShow-bigPhoto .arrow svg {
         position: absolute;
         z-index: 20;
         width: 0.7em;
@@ -509,16 +511,41 @@ footer {
         border-radius: 50%;
         top: 50%;
         left: -1.3rem;
+        fill: red;
 
     }
+.productShow-bigPhoto .arrow svg:hover {
 
-    .productShow-bigPhoto img.arrow~img {
+    fill: red;
+}
+    .productShow-bigPhoto svg.arrow~svg {
         left: inherit;
         right: -1.3rem;
     }
 
+    .cross {
+        width: 30rem;
+        height: 2rem;
+        margin-bottom: 0.5em;
+  background-color: white;
+  -webkit-mask-image: url(images/icon-close.svg);
+  mask-image: url(images/icon-close.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: url(images/icon-close.svg);
+  -webkit-mask-position: right;
+  mask-position: url(images/icon-close.svg);
+    -webkit-mask-size: 1.5rem;
+    mask-size: url(images/icon-close.svg);
+    }
+      .cross:hover {
+      
+          background-color:hsl(26, 100%, 55%)
+
+      }
+
     .productShow-gallery img.active {
-        border: solid 1px hsl(26, 100%, 55%);
+        border: solid 2px hsl(26, 100%, 55%);
         opacity: 0.7;
     }
+
 }
