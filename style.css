@@ -252,6 +252,7 @@ div.addToCart {
 
 .displayCart {
     width: 95vw;
+    max-width: 25rem;
     min-height: 16rem;
     background-color: white;
     position: fixed;
@@ -296,6 +297,11 @@ footer {
 .desktop-gallery {
     display: none;
 }
+
+.productShow {
+    display: none;
+}
+
 
 /*DESKTOP VERSION*/
 @media (min-width: 850px) {
@@ -405,7 +411,7 @@ footer {
         width: 50%;
         display: flex;
         flex-direction: column;
-        margin: 4rem;
+        margin: 5rem 4rem 8rem 3rem;
         justify-content: center;
 
     }
@@ -418,6 +424,7 @@ footer {
         display: flex;
         flex-direction: row;
         width: 100%;
+
     }
 
     div.counter,
@@ -457,10 +464,7 @@ footer {
         left: 0;
     }
 
-    .productShow {
-        display: none;
-    }
-
+    /*Show big photo */
     .productShow.active {
         display: block;
         position: fixed;
@@ -474,7 +478,7 @@ footer {
 
     .productShowWrapper {
         display: block;
-        width: 24vw;
+        width: 30rem;
         max-height: 70%;
         position: fixed;
         top: 50%;
@@ -488,18 +492,20 @@ footer {
         display: flex;
         justify-content: flex-end;
     }
-        .productShowWrapper .cross path {
-         height: 100%;
-        }
-       .productShowWrapper .cross path:hover {
-            stroke: #FF7D1A;
-            fill:#FF7D1A;
-       }
+
+    .productShowWrapper .cross path {
+        height: 100%;
+    }
+
+    .productShowWrapper .cross path:hover {
+        stroke: #FF7D1A;
+        fill: #FF7D1A;
+    }
 
     .productShow-bigPhoto {
         width: 100%;
         position: relative;
-                margin-bottom: 2rem;
+        margin-bottom: 2rem;
     }
 
     .productShow-bigPhoto div {
@@ -531,7 +537,7 @@ footer {
         border-radius: 10px;
     }
 
- 
+
     .productShow-gallery {
         display: flex;
         width: 90%;
@@ -539,17 +545,29 @@ footer {
         align-items: center;
         justify-content: space-around;
     }
-   
+
     .productShow-gallery img {
         width: 19%;
         border-radius: 10px;
     }
-     .productShow-gallery img.active {
+
+    .productShow-gallery img.active {
         border: solid 3px hsl(26, 100%, 55%);
         opacity: 0.7;
         filter: brightness(1.2) saturate(0.5);
-    } 
-/*
+    }
+
+    .displayCart {
+        width: 95vw;
+        max-width: 25rem;
+        min-height: 16rem;
+        background-color: white;
+        position: fixed;
+        top: 6rem;
+
+    }
+
+    /*
 
    
 
@@ -574,5 +592,12 @@ footer {
       }
 
    */
+
+}
+
+@media(min-width: 1800px) {
+    .displayCart {
+        right: 10rem;
+    }
 
 }
