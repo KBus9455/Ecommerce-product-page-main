@@ -43,4 +43,26 @@ bigPhoto.classList.add('active');
 cartContent.classList.remove('active');
 }); 
 
+//change photo in description 
+
+const photoContainter = document.querySelector('.photoBox');
+const desktopGallery = [...document.querySelectorAll('.desktop-gallery img')];
+
+const photoSources = ['images/image-product-1.jpg','images/image-product-2.jpg','images/image-product-3.jpg','images/image-product-4.jpg'];
+
+let currentSource;
+
+const changePhoto = function(src){
+photoContainter.src = src;
+}
+
+
+const getSource = function(e){
+   currentSource=this.src;
+   changePhoto(currentSource);
+}
+
+desktopGallery.forEach(function(photo){
+photo.addEventListener('click', getSource);
+})
 
