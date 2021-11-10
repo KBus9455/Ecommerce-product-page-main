@@ -1,18 +1,17 @@
-
 // Show and hide menu 
 
 const menuButton = document.querySelector('div.menu');
 const menuClose = document.querySelector('li.close');
 const menuMobile = document.querySelector('.menu-mobile');
 
-menuButton.addEventListener('click', function(){
-menuMobile.classList.toggle('active');
-console.log('dziala')
+menuButton.addEventListener('click', function () {
+    menuMobile.classList.toggle('active');
+    console.log('dziala')
 });
 
-menuClose.addEventListener('click', function(){
-menuMobile.classList.toggle('active');
-console.log('dziala')
+menuClose.addEventListener('click', function () {
+    menuMobile.classList.toggle('active');
+    console.log('dziala')
 });
 
 // Display cart 
@@ -21,8 +20,8 @@ const cartMobile = document.querySelector('div.cart img');
 const cartDesktop = document.querySelector('li.cartTopPanel img');
 const cartContent = document.querySelector('div.displayCart');
 
-const displayCart=function(){
-cartContent.classList.toggle('active');
+const displayCart = function () {
+    cartContent.classList.toggle('active');
 }
 cartMobile.addEventListener('click', displayCart);
 cartDesktop.addEventListener('click', displayCart);
@@ -34,35 +33,70 @@ const bigPhoto = document.querySelector('.productShow');
 const productPhoto = document.querySelector('img.photoBox');
 
 
-cross.addEventListener('click', function(){
-bigPhoto.classList.remove('active');
+cross.addEventListener('click', function () {
+    bigPhoto.classList.remove('active');
 });
 
-productPhoto.addEventListener('click',function(){
-bigPhoto.classList.add('active');
-cartContent.classList.remove('active');
-}); 
+productPhoto.addEventListener('click', function () {
+    bigPhoto.classList.add('active');
+    cartContent.classList.remove('active');
+});
 
 //change photo in description 
 
 const photoContainter = document.querySelector('.photoBox');
 const desktopGallery = [...document.querySelectorAll('.desktop-gallery img')];
 
-const photoSources = ['images/image-product-1.jpg','images/image-product-2.jpg','images/image-product-3.jpg','images/image-product-4.jpg'];
+const photoSources = ['images/image-product-1.jpg', 'images/image-product-2.jpg', 'images/image-product-3.jpg', 'images/image-product-4.jpg'];
 
 let currentSource;
 
-const changePhoto = function(src){
-photoContainter.src = src;
+const changePhoto = function (src) {
+    photoContainter.src = src;
+    productShownPhoto.src = src;
+    productShowGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+
+    productShowGallery.forEach(function (item) {
+        if (item.src === src) {
+            item.classList.add('active');
+        }
+    });
+
 }
 
-
-const getSource = function(e){
-   currentSource=this.src;
-   changePhoto(currentSource);
+const getSource = function (e) {
+    currentSource = this.src;
+    desktopGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+    this.classList.add('active');
+    changePhoto(currentSource);
 }
 
-desktopGallery.forEach(function(photo){
-photo.addEventListener('click', getSource);
+desktopGallery.forEach(function (photo) {
+    photo.addEventListener('click', getSource);
 })
 
+//change photo in product show
+const productShownPhoto = document.querySelector('.productShow-bigPhoto img');
+const productShowGallery = [...document.querySelectorAll('.productShow-gallery img')];
+
+
+const changeShownPhoto = function (src) {
+    productShownPhoto.src = src;
+}
+
+const getSourceShownPhoto = function (e) {
+    currentSource = this.src;
+    productShowGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+    this.classList.add('active');
+    changeShownPhoto(currentSource);
+}
+
+productShowGallery.forEach(function (photo) {
+    photo.addEventListener('click', getSourceShownPhoto);
+})
