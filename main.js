@@ -49,9 +49,9 @@ const desktopGallery = [...document.querySelectorAll('.desktop-gallery img')];
 
 const photoSources = ['images/image-product-1.jpg', 'images/image-product-2.jpg', 'images/image-product-3.jpg', 'images/image-product-4.jpg'];
 
-let currentSource;
+let currentSource = 'images/image-product-1.jpg';
 
-const changePhoto = function (src) {
+const changeDescriptionPhoto = function (src) {
     photoContainter.src = src;
     productShownPhoto.src = src;
     productShowGallery.forEach(function (item) {
@@ -72,7 +72,7 @@ const getSource = function (e) {
         item.classList.remove('active')
     });
     this.classList.add('active');
-    changePhoto(currentSource);
+    changeDescriptionPhoto(currentSource);
 }
 
 desktopGallery.forEach(function (photo) {
@@ -100,3 +100,39 @@ const getSourceShownPhoto = function (e) {
 productShowGallery.forEach(function (photo) {
     photo.addEventListener('click', getSourceShownPhoto);
 })
+
+// changing photos by arrows
+
+const arrows = [...document.querySelectorAll('.productShow-bigPhoto div')];
+
+let currentIndex = 0;
+const getIndex = function () {
+    for (let i = 0; i < photoSources.length; i++) {
+        if (currentSource.includes(photoSources[i])) {
+            currentIndex = i;
+            console.log(currentIndex);
+        }
+    }
+}
+
+
+const changePhotoArrow = function () {
+    getIndex();
+    if (this.className == 'right') {
+        currentIndex >= 3 ? currentIndex = 0 : currentIndex++;
+    } else {
+        currentIndex <= 0 ? currentIndex = 3 : currentIndex--;
+    }
+
+    productShownPhoto.src = photoSources[currentIndex];
+         currentSource=photoSources[currentIndex];
+             productShowGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+         productShowGallery[currentIndex].classList.add('active');
+
+};
+
+arrows.forEach(function (arrow) {
+    arrow.addEventListener('click', changePhotoArrow);
+});

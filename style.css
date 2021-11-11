@@ -525,9 +525,9 @@ footer {
 
     .productShow-bigPhoto img+div {
         left: inherit;
-        padding-right: inherit;
-        padding-left: 0.3em;
         right: calc(0% - 1.5rem);
+          transform: scaleX(-1);
+        
     }
 
     .productShow-bigPhoto svg:hover path {
