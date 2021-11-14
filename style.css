@@ -493,6 +493,7 @@ footer {
         height: 2rem;
         display: flex;
         justify-content: flex-end;
+        cursor: pointer;
     }
 
     .productShowWrapper .cross path {
@@ -521,6 +522,7 @@ footer {
         line-height: 3rem;
         text-align: center;
         padding-right: 0.4em;
+        cursor: pointer;
     }
 
     .productShow-bigPhoto img+div {
@@ -604,3 +606,5 @@ footer {
 
    */
 
+
+   

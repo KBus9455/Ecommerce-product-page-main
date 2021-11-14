@@ -89,11 +89,13 @@ const changeShownPhoto = function (src) {
 }
 
 const getSourceShownPhoto = function (e) {
+    console.log(this);
+    console.log(this.src);
     currentSource = this.src;
     productShowGallery.forEach(function (item) {
         item.classList.remove('active')
     });
-    this.classList.add('active');
+     this.classList.add('active');
     changeShownPhoto(currentSource);
 }
 
@@ -116,23 +118,55 @@ const getIndex = function () {
 }
 
 
-const changePhotoArrow = function () {
+const changePhotoArrowDesktop = function () {
     getIndex();
-    if (this.className == 'right') {
+        if (this.className == 'right') {
         currentIndex >= 3 ? currentIndex = 0 : currentIndex++;
     } else {
         currentIndex <= 0 ? currentIndex = 3 : currentIndex--;
     }
-
     productShownPhoto.src = photoSources[currentIndex];
-         currentSource=photoSources[currentIndex];
-             productShowGallery.forEach(function (item) {
+    currentSource = photoSources[currentIndex];
+
+    productShowGallery.forEach(function (item) {
         item.classList.remove('active')
     });
-         productShowGallery[currentIndex].classList.add('active');
+    productShowGallery[currentIndex].classList.add('active');
 
 };
 
 arrows.forEach(function (arrow) {
-    arrow.addEventListener('click', changePhotoArrow);
+    arrow.addEventListener('click', changePhotoArrowDesktop);
 });
+
+
+// change photo by arrow on mobile
+
+const changePhotoArrowMobile = function () {
+    getIndex();
+    console.log(this);
+    console.log(this.className);
+      if (this.className.includes('right')) {
+        currentIndex >= 3 ? currentIndex = 0 : currentIndex++;
+    } else {
+        currentIndex <= 0 ? currentIndex = 3 : currentIndex--;
+    }
+    productPhoto.src = photoSources[currentIndex];
+    currentSource = photoSources[currentIndex];
+       desktopGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+    desktopGallery[currentIndex].classList.add('active');
+}
+
+
+const arrowsMobile = document.querySelectorAll('.productPhoto .arrow');
+arrowsMobile.forEach(function (arrow) {
+    arrow.addEventListener('click', changePhotoArrowMobile);
+});
+
+// adding to cart
+
+class Counter {
+
+}
