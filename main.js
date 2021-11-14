@@ -38,6 +38,13 @@ cross.addEventListener('click', function () {
 });
 
 productPhoto.addEventListener('click', function () {
+    getIndex();
+    productShownPhoto.src = photoSources[currentIndex];
+    productShowGallery.forEach(function (item) {
+        item.classList.remove('active')
+    });
+  productShowGallery[currentIndex].classList.add('active');
+
     bigPhoto.classList.add('active');
     cartContent.classList.remove('active');
 });
@@ -89,8 +96,6 @@ const changeShownPhoto = function (src) {
 }
 
 const getSourceShownPhoto = function (e) {
-    console.log(this);
-    console.log(this.src);
     currentSource = this.src;
     productShowGallery.forEach(function (item) {
         item.classList.remove('active')
