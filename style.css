@@ -358,6 +358,23 @@ footer {
         height: 3.5rem;
         margin: 1.25rem;
     }
+li.cartTopPanel {
+    position: relative;
+}
+li.cartTopPanel p.active{
+    position: absolute;
+    top:1.5em;
+    left: 2.5em;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background-color: hsl(26, 100%, 55%);
+        border-radius:0.3em;
+        
+}
+li.cartTopPanel p {
+display:none;
+}
 
     ul.desktop.col2 li.cartTopPanel img {
         padding: 2rem 1.5rem;
@@ -426,6 +443,7 @@ footer {
         display: flex;
         flex-direction: row;
         width: 100%;
+        cursor: pointer;
 
     }
 
@@ -437,6 +455,7 @@ footer {
 
     div.counter {
         width: 32%;
+        z-index:40;
     }
 
     div.addToCart {

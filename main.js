@@ -43,7 +43,7 @@ productPhoto.addEventListener('click', function () {
     productShowGallery.forEach(function (item) {
         item.classList.remove('active')
     });
-  productShowGallery[currentIndex].classList.add('active');
+    productShowGallery[currentIndex].classList.add('active');
 
     bigPhoto.classList.add('active');
     cartContent.classList.remove('active');
@@ -100,7 +100,7 @@ const getSourceShownPhoto = function (e) {
     productShowGallery.forEach(function (item) {
         item.classList.remove('active')
     });
-     this.classList.add('active');
+    this.classList.add('active');
     changeShownPhoto(currentSource);
 }
 
@@ -125,7 +125,7 @@ const getIndex = function () {
 
 const changePhotoArrowDesktop = function () {
     getIndex();
-        if (this.className == 'right') {
+    if (this.className == 'right') {
         currentIndex >= 3 ? currentIndex = 0 : currentIndex++;
     } else {
         currentIndex <= 0 ? currentIndex = 3 : currentIndex--;
@@ -151,14 +151,14 @@ const changePhotoArrowMobile = function () {
     getIndex();
     console.log(this);
     console.log(this.className);
-      if (this.className.includes('right')) {
+    if (this.className.includes('right')) {
         currentIndex >= 3 ? currentIndex = 0 : currentIndex++;
     } else {
         currentIndex <= 0 ? currentIndex = 3 : currentIndex--;
     }
     productPhoto.src = photoSources[currentIndex];
     currentSource = photoSources[currentIndex];
-       desktopGallery.forEach(function (item) {
+    desktopGallery.forEach(function (item) {
         item.classList.remove('active')
     });
     desktopGallery[currentIndex].classList.add('active');
@@ -172,6 +172,20 @@ arrowsMobile.forEach(function (arrow) {
 
 // adding to cart
 
-class Counter {
+const counter = document.querySelector('.counterNumber');
+const plus = document.querySelector('.plus');
+const minus = document.querySelector('.minus');
 
-}
+let quantityToAdd = parseInt(counter.textContent);
+
+minus.addEventListener('click', function() {
+    if (quantityToAdd > 0) {
+        quantityToAdd--;
+        counter.textContent = quantityToAdd;
+    }
+});
+
+plus.addEventListener('click', function() {
+    quantityToAdd++;
+        counter.textContent = quantityToAdd;
+});
