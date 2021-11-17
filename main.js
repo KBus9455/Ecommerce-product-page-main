@@ -179,14 +179,16 @@ const minus = document.querySelector('.minus');
 let quantityToAdd = parseInt(counter.textContent);
 
 minus.addEventListener('click', function () {
-    if (quantityToAdd > 0) {
-        quantityToAdd--;
+    if (quantityToAdd) {
+        --quantityToAdd;
+        console.log(quantityToAdd);
         counter.textContent = quantityToAdd;
     }
 });
 
 plus.addEventListener('click', function () {
     quantityToAdd++;
+    console.log(quantityToAdd);
     counter.textContent = quantityToAdd;
 });
 
@@ -198,16 +200,21 @@ const clearCounter = function () {
 }
 
 function cartNumbers() {
+    if(quantityToAdd){
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
+
     document.querySelector('.cartTopPanel div').classList.add('active');
+     let newNumber = productNumbers + quantityToAdd;
+     console.log(newNumber);
     if (productNumbers) {
-        productNumbers = localStorage.setItem('cartNumbers', productNumbers + quantityToAdd);
+        localStorage.setItem('cartNumbers', newNumber);
     } else {
-        productNumbers = localStorage.setItem('cartNumbers', quantityToAdd);
+        localStorage.setItem('cartNumbers', quantityToAdd);
     }
-    quantityCart.textContent = productNumbers;
+    quantityCart.textContent = newNumber;
     clearCounter();
+    }
 };
 const addToCartBtn = document.querySelector('.addToCart');
 addToCartBtn.addEventListener('click', cartNumbers)
