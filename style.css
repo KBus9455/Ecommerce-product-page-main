@@ -206,7 +206,7 @@ div.counter,
     height: 4rem;
     border-radius: 10px;
     line-height: 4rem;
-    z-index: -1;
+    z-index: 10;
 }
 
 div.counter {
@@ -235,6 +235,7 @@ div.addToCart {
     margin: 1em auto;
     color: white;
     box-shadow: 0 1em 1.5em hsl(26, 100%, 82%);
+        cursor: pointer;
 }
 
 .addToCart div {
@@ -361,7 +362,7 @@ footer {
 li.cartTopPanel {
     position: relative;
 }
-li.cartTopPanel p.active{
+li.cartTopPanel div.active{
     position: absolute;
     top:1.5em;
     left: 2.5em;
@@ -369,9 +370,18 @@ li.cartTopPanel p.active{
         width: 1em;
         height: 1em;
         background-color: hsl(26, 100%, 55%);
-        border-radius:0.3em;
-        
+        border-radius:0.3em;     
+        text-align: center
 }
+li.cartTopPanel div.active p{
+line-height: 1em;
+display: inline;
+font-size: 0.7em;
+color:white;
+position: relative;
+top:-0.3em;   
+}
+
 li.cartTopPanel p {
 display:none;
 }
@@ -443,9 +453,10 @@ display:none;
         display: flex;
         flex-direction: row;
         width: 100%;
-        cursor: pointer;
-
     }
+.description-buttons div img {
+    cursor:pointer;
+}
 
     div.counter,
     .addToCart {
