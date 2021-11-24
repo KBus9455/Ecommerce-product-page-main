@@ -175,8 +175,11 @@ arrowsMobile.forEach(function (arrow) {
 const counter = document.querySelector('.counterNumber');
 const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
+let quantityToAdd =0;
+if (quantityToAdd) {
+ quantityToAdd= parseInt(counter.textContent);
+};
 
-let quantityToAdd = parseInt(counter.textContent);
 
 minus.addEventListener('click', function () {
     if (quantityToAdd) {
@@ -201,12 +204,12 @@ const clearCounter = function () {
 
 function cartNumbers() {
     if(quantityToAdd){
-    let productNumbers = localStorage.getItem('cartNumbers');
-    productNumbers = parseInt(productNumbers);
-
+    productNumbers = Number(localStorage.getItem('cartNumbers'));
+    console.log("productNumbers" +productNumbers);
+       console.log("quantityToAdd" +quantityToAdd);
     document.querySelector('.cartTopPanel div').classList.add('active');
      let newNumber = productNumbers + quantityToAdd;
-     console.log(newNumber);
+     console.log("neNumber is "+newNumber);
     if (productNumbers) {
         localStorage.setItem('cartNumbers', newNumber);
     } else {
