@@ -172,26 +172,28 @@ arrowsMobile.forEach(function (arrow) {
 
 // adding to cart
 
+const carts = [...document.querySelectorAll("[id=carts]")];
+const cartsNumbers = [...document.querySelectorAll("[id=cartNumber]")];
+
+
 const counter = document.querySelector('.counterNumber');
 const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
-let quantityToAdd =0;
+let quantityToAdd = 0;
 if (quantityToAdd) {
- quantityToAdd= parseInt(counter.textContent);
+    quantityToAdd = parseInt(counter.textContent);
 };
 
 
 minus.addEventListener('click', function () {
     if (quantityToAdd) {
         --quantityToAdd;
-        console.log(quantityToAdd);
         counter.textContent = quantityToAdd;
     }
 });
 
 plus.addEventListener('click', function () {
     quantityToAdd++;
-    console.log(quantityToAdd);
     counter.textContent = quantityToAdd;
 });
 
@@ -202,21 +204,25 @@ const clearCounter = function () {
     counter.textContent = quantityToAdd;
 }
 
+
+
 function cartNumbers() {
-    if(quantityToAdd){
-    productNumbers = Number(localStorage.getItem('cartNumbers'));
-    console.log("productNumbers" +productNumbers);
-       console.log("quantityToAdd" +quantityToAdd);
-    document.querySelector('.cartTopPanel div').classList.add('active');
-     let newNumber = productNumbers + quantityToAdd;
-     console.log("neNumber is "+newNumber);
-    if (productNumbers) {
-        localStorage.setItem('cartNumbers', newNumber);
-    } else {
-        localStorage.setItem('cartNumbers', quantityToAdd);
-    }
-    quantityCart.textContent = newNumber;
-    clearCounter();
+    if (quantityToAdd) {
+        productNumbers = Number(localStorage.getItem('cartNumbers'));
+        carts.forEach(function (cart) {
+            cart.classList.add('active');
+        })
+        let newNumber = productNumbers + quantityToAdd;
+        if (productNumbers) {
+            localStorage.setItem('cartNumbers', newNumber);
+        } else {
+            localStorage.setItem('cartNumbers', quantityToAdd);
+        }
+        cartsNumbers.forEach(function (cartNumber) {
+            cartNumber.textContent = newNumber;
+        });
+
+        clearCounter();
     }
 };
 const addToCartBtn = document.querySelector('.addToCart');
@@ -225,8 +231,6 @@ addToCartBtn.addEventListener('click', cartNumbers)
 
 //loading cart number 
 
-const quantityCart = document.querySelector('.cartTopPanel div p');
-
 const onLoadCartNumbers = function () {
     let productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
@@ -234,7 +238,8 @@ const onLoadCartNumbers = function () {
         console.log(productNumbers);
         document.querySelector('.cartTopPanel div').classList.add('active');
     }
-    quantityCart.textContent = productNumbers;
-
+     cartsNumbers.forEach(function (cartNumber) {
+            cartNumber.textContent = productNumbers;
+        });
 };
 onLoadCartNumbers();

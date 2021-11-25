@@ -18,7 +18,7 @@
     <div class='menu'><img src="images/icon-menu.svg" alt="menubar"></div>
     <div class='logo'><img src="images/logo.svg" alt="logo"></div>
     <div class='cart'><img src="images/icon-cart.svg" alt="cart">
-      <div class='active'>
+      <div id='carts'>
         <!-- style='
     background-color: hsl(26, 100%, 55%);
     width: 0.2;
@@ -29,7 +29,7 @@
     top: 1.4em;
     position: absolute;
 ' -->
-        <p style='
+        <p id='cartNumber' style='
     color: white; font-size: 0.7em'>0</p>
       </div>
       <span> </span>
@@ -60,8 +60,8 @@
     </ul>
     <ul class="desktop col2">
       <li class='cartTopPanel'><img src="images/icon-cart.svg" alt="cart">
-        <div>
-          <p>0</p>
+        <div id='carts'>
+          <p id='cartNumber'>0</p>
         </div>
       </li>
       <li class='avatar'><img src="images/image-avatar.png" alt="avatar"></li>
