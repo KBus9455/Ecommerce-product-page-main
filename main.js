@@ -197,6 +197,22 @@ plus.addEventListener('click', function () {
     counter.textContent = quantityToAdd;
 });
 
+
+
+// display elements in cart 
+
+const cartTableContent = document.querySelector('.cartTableContent');
+const emptyCart = document.querySelector('.emptyCart');
+
+
+const fillInContentTable = function (number) {
+    if (carts[0].className.includes('active')) {
+        emptyCart.style.display = 'none';
+        cartTableContent.innerHTML = `<table><tr><th>Item</th><th>Price</th></tr><tr><td>Fall Limited Edition Sneakers</td><td>${number*125} $</td><tr><th>Sum</th><th>${number*125} $</th></tr>`;
+    }
+}
+
+
 // increase quantity in cart 
 
 const clearCounter = function () {
@@ -219,10 +235,12 @@ function cartNumbers() {
             localStorage.setItem('cartNumbers', quantityToAdd);
         }
         cartsNumbers.forEach(function (cartNumber) {
-            cartNumber.textContent = newNumber;
+            cartNumber.textContent = newNumber;      
+             fillInContentTable(newNumber);
         });
 
         clearCounter();
+ 
     }
 };
 const addToCartBtn = document.querySelector('.addToCart');
@@ -230,16 +248,21 @@ addToCartBtn.addEventListener('click', cartNumbers)
 
 
 //loading cart number 
-
+let productNumbers;
 const onLoadCartNumbers = function () {
-    let productNumbers = localStorage.getItem('cartNumbers');
+    productNumbers = localStorage.getItem('cartNumbers');
     productNumbers = parseInt(productNumbers);
     if (productNumbers) {
         console.log(productNumbers);
-        document.querySelector('.cartTopPanel div').classList.add('active');
-    }
-     cartsNumbers.forEach(function (cartNumber) {
-            cartNumber.textContent = productNumbers;
+        carts.forEach(function (cart) {
+            cart.classList.add('active');
         });
+    }
+    cartsNumbers.forEach(function (cartNumber) {
+        cartNumber.textContent = productNumbers;
+    });
+
+fillInContentTable(productNumbers);
 };
 onLoadCartNumbers();
+

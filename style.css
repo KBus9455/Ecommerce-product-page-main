@@ -50,11 +50,12 @@ h1 {
 .topPanel .cart {
     width: 25%;
     justify-content: flex-start;
-    cursor: pointer;
+
 }
 
 .topPanel .cart img {
     width: 1.5em;
+    cursor: pointer;
 }
 
 .topPanel .cart span {
@@ -89,7 +90,7 @@ div.cart div.active p {
 
 nav.menu-mobile {
     position: fixed;
-    left: -100%;
+    left: -130%;
     top: 0;
     display: flex;
     z-index: 30;
@@ -288,6 +289,9 @@ div.addToCart {
     box-shadow: 0 2em 4em rgba(17, 12, 12, 0.253);
     z-index: 30;
 }
+div.plus, div.minus{
+    cursor: pointer;
+}
 
 .displayCart p {
     font-weight: 700;
@@ -302,6 +306,23 @@ div.addToCart {
     margin: auto;
 }
 
+.cartTableContent{
+    display: flex;
+    margin: 1em auto;
+    width: 90%;
+    height: 100%;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.cartTableContent td{
+    text-align: center;
+    padding:0.5em;
+}
+.cartTableContent td:nth-child(1),
+.cartTableContent th:nth-child(1)
+    {
+  width: 70%;
+}
 /* footer */
 
 footer {
@@ -375,11 +396,15 @@ footer {
 
     ul.desktop.col2 {
         list-style: none;
+    
     }
-
+ul.desktop.col2 img{
+   cursor: pointer;
+}
     ul.desktop.col2 li.avatar img {
         height: 3.5rem;
         margin: 1.25rem;
+         
     }
 
     li.cartTopPanel {
